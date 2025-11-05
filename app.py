@@ -16,7 +16,6 @@ def get_all_items():
         if "items" in json_feed:
             all_items.extend(json_feed["items"])
     all_items.sort(key=lambda item: dateutil.parser.parse(item.get("date_published", "1970-01-01T00:00:00Z")), reverse=True)
-    print(all_items)
     return all_items
 
 @app.route("/")

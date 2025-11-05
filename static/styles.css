@@ -14,6 +14,7 @@
     width: 80%;
     height: 75%;
     background-color: #f6f6ef;
+    padding-top: 0px;
 }
 
 body {
@@ -38,3 +39,7 @@ img {
     max-width: 100%;
 }
 
+#nav-bar {
+    background-color: #ff6600;
+    padding: 1px;
+}
