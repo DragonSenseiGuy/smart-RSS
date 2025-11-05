@@ -11,7 +11,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75%;
+    width: 80%;
     height: 75%;
     background-color: #f6f6ef;
 }
@@ -21,3 +21,20 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
 }
+
+blockquote {
+    margin: 1em 0;
+    border-left: 0.75em solid #e0e0da;
+    padding-left: 0.75em;
+}
+
+pre {
+    background-color: #e0e0da;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+

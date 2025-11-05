@@ -5,18 +5,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Smart RSS</title>
 </head>
 <body>
     <div id="center-div">
-        <h1 style="padding-left: 20px;">RSS Feed</h1>
+        <h1 style="padding-left: 20px;">{{ item["title"] }} <a href={{ item["url"] }}><img src="{{ url_for('static', filename='img/new-tab.svg') }}"></img></a></h1>
         <div style="background-color: #f6f6ef; overflow: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px;">
-            {% for item in items %}
-                <div style="padding:5px"><a class="homepage-links" href="/blog/{{ loop.index0 }}">{{ item["title"] }}</a> (<a class="homepage-links" href={{ item["url"] }}>{{ item["url"].split('/')[2] }}</a>)</div>
-            {% endfor %}
+            {{ item["summary"] | safe }}
         </div>
     </div>
-
+    
 </body>
 </html>
