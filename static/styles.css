@@ -43,3 +43,7 @@ img {
     background-color: #ff6600;
     padding: 1px;
 }
+
+.nav-bar-links:visited {
+    color: black;
+}

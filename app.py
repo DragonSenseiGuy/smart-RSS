@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from feed2json import feed2json
 import os
 from dotenv import load_dotenv
@@ -7,7 +7,7 @@ import dateutil.parser
 app = Flask(__name__)
 load_dotenv()
 
-rss_feeds=["https://dragonsensei.is-a.dev/atom/everything/", "https://simonwillison.net/atom/everything/", "https://jb3.dev/feed.xml"]
+rss_feeds=[]
 
 def get_all_items():
     all_items = []
@@ -29,6 +29,17 @@ def blog(item_number):
     if 0 <= item_number < len(items):
         return render_template("blog.html", item=items[item_number])
     return None
+
+@app.route("/settings")
+def settings():
+    return render_template("settings.html")
+
+@app.route("/add_feed", methods=["POST"])
+def add_feed():
+    feed_url = request.form.get("feed_url")
+    if feed_url:
+        rss_feeds.append(feed_url)
+    return redirect("/settings?success=True")
 
 if __name__=="__main__":
     app.run()
