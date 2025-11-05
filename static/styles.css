@@ -1,0 +1,23 @@
+.homepage-links {
+    color: black;
+    text-decoration: none;
+}
+.homepage-links:visited {
+    color: grey;
+}
+
+#center-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    background-color: #f6f6ef;
+}
+
+body {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
