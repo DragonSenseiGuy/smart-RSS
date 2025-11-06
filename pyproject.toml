@@ -11,3 +11,8 @@ dependencies = [
     "python-dateutil>=2.9.0.post0",
     "python-dotenv>=1.2.1",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.3",
+]

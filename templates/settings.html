@@ -5,18 +5,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
     <title>Smart RSS</title>
 </head>
 <body>
     <div>
         <div id="center-div">
-            <div id="nav-bar">
-                <div style="padding-left: 21px; padding-right: 21px; display: flex; justify-content: space-between; align-items: center;">
-                    <h2 style="width: 130px; margin: 0;"><a href="/" class="homepage-links nav-bar-links">RSS Feed</a></h2>
-                    <a href="/settings" style="text-align: right;" class="homepage-links nav-bar-links">settings</a>
-                </div>
-            </div>
+            {% include 'nav.html' %}
             <div style="background-color: #f6f6ef; overflow: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
                 Add your RSS feeds individually:
                 <br />
