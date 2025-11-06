@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from feed2json import feed2json
-import os
+import os #noqa: F401
 from dotenv import load_dotenv
 import dateutil.parser
 import json
