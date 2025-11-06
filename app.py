@@ -3,14 +3,19 @@ from feed2json import feed2json
 import os
 from dotenv import load_dotenv
 import dateutil.parser
+import json
 
 app = Flask(__name__)
 load_dotenv()
 
-rss_feeds=[]
+def get_feeds():
+    with open('feeds.json', 'r') as f:
+        data = json.load(f)
+    return data['urls']
 
 def get_all_items():
     all_items = []
+    rss_feeds = get_feeds()
     for feed_url in rss_feeds:
         json_feed:dict = feed2json(feed_url)
         if "items" in json_feed:
@@ -38,8 +43,12 @@ def settings():
 def add_feed():
     feed_url = request.form.get("feed_url")
     if feed_url:
-        rss_feeds.append(feed_url)
-    return redirect("/settings?success=True")
+        with open('feeds.json', 'r+') as f:
+            data = json.load(f)
+            data['urls'].append(feed_url)
+            f.seek(0)
+            json.dump(data, f, indent=4)
+    return redirect("/settings")
 
 if __name__=="__main__":
     app.run()
