@@ -7,8 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
     <title>Smart RSS</title>
+    {% if current_theme == "Custom" %}
+    <style>
+        .custom-theme #center-div {
+            background-color: {{ custom_theme.background_color }};
+            color: {{ custom_theme.text_color }};
+        }
+        .custom-theme #nav-bar {
+            background-color: {{ custom_theme.nav_bar_color }};
+        }
+        .custom-theme .nav-bar-links {
+            color: {{ custom_theme.nav_bar_links_color }};
+            text-decoration: none;
+        }
+        .custom-theme .homepage-links {
+            color: {{ custom_theme.homepage_links_color }};
+        }
+    </style>
+    {% endif %}
 </head>
-<body>
+<body {% if current_theme == "Custom" %}class="custom-theme"{% endif %}>
     <div>
         <div id="center-div">
             {% include 'nav.html' %}

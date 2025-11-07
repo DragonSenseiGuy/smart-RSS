@@ -2,9 +2,6 @@
     color: black;
     text-decoration: none;
 }
-.homepage-links:visited {
-    color: grey;
-}
 
 #center-div {
     width: 80%;
@@ -40,6 +37,11 @@ img {
     padding: 1px;
 }
 
-.nav-bar-links:visited {
+.nav-bar-links {
+    color: black;
+    text-decoration: none;
+}
+
+a {
     color: black;
 }
