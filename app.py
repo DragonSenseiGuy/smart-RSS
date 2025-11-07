@@ -20,8 +20,11 @@ def get_feeds():
         return []
     else:
         with open('data/feeds.json', 'r') as f:
-            data = json.load(f)
-        return data['urls']
+            try:
+                data = json.load(f)
+                return data.get('urls', [])
+            except json.JSONDecodeError:
+                return []
     return "Unexpected Error Occured", 500
 
 def get_all_items():
@@ -101,11 +104,36 @@ def clear_custom_theme():
 def add_feed():
     feed_url = request.form.get("feed_url")
     if feed_url:
-        with open('data/feeds.json', 'r+') as f:
-            data = json.load(f)
+        try:
+            with open('data/feeds.json', 'r') as f:
+                data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            data = {'urls': []}
+
+        if feed_url not in data['urls']:
             data['urls'].append(feed_url)
-            f.seek(0)
+
+        with open('data/feeds.json', 'w') as f:
             json.dump(data, f, indent=4)
+            
+    return redirect("/settings")
+
+@app.route("/remove_feed", methods=["POST"])
+def remove_feed():
+    feed_url = request.form.get("feed_url")
+    if feed_url:
+        try:
+            with open('data/feeds.json', 'r') as f:
+                data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            data = {'urls': []}
+
+        if 'urls' in data and feed_url in data['urls']:
+            data['urls'].remove(feed_url)
+
+        with open('data/feeds.json', 'w') as f:
+            json.dump(data, f, indent=4)
+
     return redirect("/settings")
 
 @app.route("/upload", methods=["POST"])

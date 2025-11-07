@@ -44,6 +44,17 @@
                     {% endif %}
                 </form>
                 <br />
+                <div style="background-color: #f6f6ef; overflow: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
+                Remove your RSS feeds individually:
+                <br />
+                <form action="/remove_feed" method="post">
+                    <input name="feed_url">
+                    <button>Remove</button>
+                    {% if request.args.get('success') %}
+                      <p style="color: grey;">Sucessfully removed feed!</p>
+                    {% endif %}
+                </form>
+                <br />
                 Themes:
                 <form action="/change_theme" method="post">
                     <input type="radio" id="default" name="theme" value="Hacker News" {% if current_theme == "Hacker News" %}checked{% endif %}>

@@ -10,3 +10,4 @@ Smart RSS includes
 - Custom Themes
 - Saves your feeds into a JSON file
 - Importing/Exporting of your feed data
+- Individual addition and removal of RSS feeds
