@@ -58,6 +58,15 @@
                 <form action="/clear_custom_theme" method="post">
                     <button type="submit">Clear Custom Theme</button>
                 </form>
+                <br />
+                <form action="{{ url_for('export_json') }}" method="GET">
+                    <input type="submit" value="Export to JSON">
+                </form>
+                <p>Import Data(Json Format):</p>
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" accept=".json" name="file">
+                    <input type="submit" value="Upload" />
+                </form>
 
             </div>
         </div>

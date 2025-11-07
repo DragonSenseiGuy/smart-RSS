@@ -9,3 +9,4 @@ Smart RSS includes
 - RSS reader for blogs with RSS
 - Custom Themes
 - Saves your feeds into a JSON file
+- Importing/Exporting of your feed data

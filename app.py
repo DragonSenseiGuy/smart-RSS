@@ -1,17 +1,28 @@
-from flask import Flask, render_template, request, redirect, make_response
+from flask import Flask, render_template, request, redirect, make_response, send_from_directory
 from feed2json import feed2json
 import os #noqa: F401
 from dotenv import load_dotenv
 import dateutil.parser
 import json
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'data' 
+ALLOWED_EXTENSIONS = {'json'}
+JSON_DIR="data"
+JSON_FILENAME="feeds.json"
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 load_dotenv()
 
 def get_feeds():
-    with open('feeds.json', 'r') as f:
-        data = json.load(f)
-    return data['urls']
+    if not os.path.exists('data/feeds.json'):
+        return []
+    else:
+        with open('data/feeds.json', 'r') as f:
+            data = json.load(f)
+        return data['urls']
+    return "Unexpected Error Occured", 500
 
 def get_all_items():
     all_items = []
@@ -90,12 +101,35 @@ def clear_custom_theme():
 def add_feed():
     feed_url = request.form.get("feed_url")
     if feed_url:
-        with open('feeds.json', 'r+') as f:
+        with open('data/feeds.json', 'r+') as f:
             data = json.load(f)
             data['urls'].append(feed_url)
             f.seek(0)
             json.dump(data, f, indent=4)
     return redirect("/settings")
+
+@app.route("/upload", methods=["POST"])
+def upload():
+    if "file" not in request.files:
+        return "No file part in the request", 400
+    
+    file = request.files["file"]
+
+    if file.filename == "":
+        return "No selected file", 400
+    
+    if file :
+        filename = secure_filename("feeds.json")
+        file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+        return redirect("/")
+    
+@app.route("/export_json")
+def export_json():
+    return send_from_directory(
+        directory=JSON_DIR, 
+        path=JSON_FILENAME, 
+        as_attachment=True
+    )
 
 if __name__=="__main__":
     app.run()
