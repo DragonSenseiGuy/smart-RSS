@@ -11,3 +11,6 @@ Smart RSS includes
 - Saves your feeds into a JSON file
 - Importing/Exporting of your feed data
 - Individual addition and removal of RSS feeds
+
+## Screenshot
+![Demo Image of Smart RSS](smart-rss-screenshot.png)
