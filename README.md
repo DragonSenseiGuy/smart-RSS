@@ -12,5 +12,28 @@ Smart RSS includes
 - Importing/Exporting of your feed data
 - Individual addition and removal of RSS feeds
 
+## Setup(macOS)
+> [!NOTE]
+> Most of these commands can also be changed for windows, but I don't own one so I can't test it.
+
+Make a virtual environment
+```
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Instal dependencies:
+
+This project uses `uv` so you need uv installed
+```
+uv sync
+```
+
+Start the development server
+
+```
+flask run --debug
+```
+
 ## Screenshot
 ![Demo Image of Smart RSS](smart-rss-screenshot.png)
