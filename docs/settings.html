@@ -5,43 +5,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/styles.css">
     <title>Smart RSS</title>
-    {% if current_theme == "Custom" %}
+
     <style>
         .custom-theme #center-div {
-            background-color: {{ custom_theme.background_color }};
-            color: {{ custom_theme.text_color }};
+            background-color: ;
+            color: ;
         }
         .custom-theme #nav-bar {
-            background-color: {{ custom_theme.nav_bar_color }};
+            background-color: ;
         }
         .custom-theme .nav-bar-links {
-            color: {{ custom_theme.nav_bar_links_color }};
+            color: ;
             text-decoration: none;
         }
         .custom-theme .homepage-links {
-            color: {{ custom_theme.homepage_links_color }};
+            color: ;
         }
         .custom-theme .nav-bar-links:visited {
-            color: {{ custom_theme.nav_bar_link_color }};
+            color: ;
         }
     </style>
-    {% endif %}
+
 </head>
-<body {% if current_theme == "Custom" %}class="custom-theme"{% endif %}>
+<body class="custom-theme">
     <div>
         <div id="center-div">
-            {% include 'nav.html' %}
+            <div id="nav-bar">
+    <div style="padding-left: 21px; padding-right: 21px; display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="width: 130px; margin: 0;"><a href="/" class="nav-bar-links">RSS Feed</a></h2>
+        <a href="/settings" style="text-align: right;" class="nav-bar-links">settings</a>
+    </div>
+</div>
             <div style="background-color: #f6f6ef; overflow: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
                 Add your RSS feeds individually:
                 <br />
                 <form action="/add_feed" method="post">
                     <input name="feed_url">
                     <button>Add</button>
-                    {% if request.args.get('success') %}
-                      <p style="color: grey;">Sucessfully added feed!</p>
-                    {% endif %}
+
                 </form>
                 <br />
                 <div style="background-color: #f6f6ef; overflow: auto; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
@@ -50,14 +52,12 @@
                 <form action="/remove_feed" method="post">
                     <input name="feed_url">
                     <button>Remove</button>
-                    {% if request.args.get('success') %}
-                      <p style="color: grey;">Sucessfully removed feed!</p>
-                    {% endif %}
+
                 </form>
                 <br />
                 Themes:
                 <form action="/change_theme" method="post">
-                    <input type="radio" id="default" name="theme" value="Hacker News" {% if current_theme == "Hacker News" %}checked{% endif %}>
+                    <input type="radio" id="default" name="theme" value="Hacker News" >
                     <label for="default">Hacker News</label><br>
                     <button type="submit">Apply Theme</button>
                 </form>
@@ -70,7 +70,7 @@
                     <button type="submit">Clear Custom Theme</button>
                 </form>
                 <br />
-                <form action="{{ url_for('export_json') }}" method="GET">
+                <form action="/export_json" method="GET">
                     <input type="submit" value="Export to JSON">
                 </form>
                 <p>Import Data(Json Format):</p>

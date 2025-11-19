@@ -218,8 +218,5 @@ __marimo__/
 #Cache
 __pycache__
 
-#Data
-data/feeds.json
-
 #OS
 .DS_Store
