@@ -33,52 +33,10 @@
         <div id="center-div">
             <div id="nav-bar">
     <div style="padding-left: 21px; padding-right: 21px; display: flex; justify-content: space-between; align-items: center;">
-        <h2 style="width: 130px; margin: 0;"><a href="/" class="nav-bar-links">RSS Feed</a></h2>
-        <a href="/settings" style="text-align: right;" class="nav-bar-links">settings</a>
+        <h2 style="width: 130px; margin: 0;"><a href="index.html" class="nav-bar-links">RSS Feed</a></h2>
+        <a href="settings.html" style="text-align: right;" class="nav-bar-links">settings</a>
     </div>
 </div>
-            <div style="background-color: #f6f6ef; overflow: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
-                Add your RSS feeds individually:
-                <br />
-                <form action="/add_feed" method="post">
-                    <input name="feed_url">
-                    <button>Add</button>
-
-                </form>
-                <br />
-                <div style="background-color: #f6f6ef; overflow: auto; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
-                Remove your RSS feeds individually:
-                <br />
-                <form action="/remove_feed" method="post">
-                    <input name="feed_url">
-                    <button>Remove</button>
-
-                </form>
-                <br />
-                Themes:
-                <form action="/change_theme" method="post">
-                    <input type="radio" id="default" name="theme" value="Hacker News" >
-                    <label for="default">Hacker News</label><br>
-                    <button type="submit">Apply Theme</button>
-                </form>
-                <p style="color: grey;">To add more themes, you'll need to create new CSS files in the `/static/` directory and then add them as options above, linking to their respective CSS files.</p>
-                <br />
-                <a href="/custom_theme">Create a Custom Theme</a>
-                <br />
-                <br />
-                <form action="/clear_custom_theme" method="post">
-                    <button type="submit">Clear Custom Theme</button>
-                </form>
-                <br />
-                <form action="/export_json" method="GET">
-                    <input type="submit" value="Export to JSON">
-                </form>
-                <p>Import Data(Json Format):</p>
-                <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" accept=".json" name="file">
-                    <input type="submit" value="Upload" />
-                </form>
-
             </div>
         </div>
     </div>

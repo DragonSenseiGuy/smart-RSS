@@ -30,12 +30,12 @@
         <div id="center-div">
             <div id="nav-bar">
     <div style="padding-left: 21px; padding-right: 21px; display: flex; justify-content: space-between; align-items: center;">
-        <h2 style="width: 130px; margin: 0;"><a href="/" class="nav-bar-links">RSS Feed</a></h2>
-        <a href="/settings" style="text-align: right;" class="nav-bar-links">settings</a>
+        <h2 style="width: 130px; margin: 0;"><a href="../index.html" class="nav-bar-links">RSS Feed</a></h2>
+        <a href="../settings.html" style="text-align: right;" class="nav-bar-links">settings</a>
     </div>
 </div>
             <div style="background-color: #f6f6ef; overflow: auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-top: 5px;">
-                <h1 style="padding-left: 20px;">Quoting Matthew Prince <a href=https://simonwillison.net/2025/Nov/19/matthew-prince/#atom-everything><img src="/static/img/new-tab.svg"></img></a></h1>
+                <h1 style="padding-left: 20px;">Quoting Matthew Prince </a></h1>
                 <blockquote cite="https://blog.cloudflare.com/18-november-2025-outage/"><p>Cloudflare's network began experiencing significant failures to deliver core network traffic [...] triggered by a change to one of our database systems' permissions which caused the database to output multiple entries into a “feature file” used by our Bot Management system. That feature file, in turn, doubled in size. The larger-than-expected feature file was then propagated to all the machines that make up our network. [...] The software had a limit on the size of the feature file that was below its doubled size. That caused the software to fail. [...]</p>
 <p>This resulted in the following panic which in turn resulted in a 5xx error:</p>
 <p><code>thread fl2_worker_thread panicked: called Result::unwrap() on an Err value</code></p></blockquote>
